@@ -17,13 +17,20 @@ export const homeStyles = StyleSheet.create({
     fontSize: 16,
   },
   input: {
-    marginTop: 8,
+    flex: 1,
     height: 56,
     backgroundColor: '#1f1e25',
     borderRadius: 5,
     color: '#FFF',
     padding: 16,
     fontSize: 16,
+  },
+  form: {
+    width: '100%',
+    flexDirection: 'row',
+    marginTop: 36,
+    gap: 12,
+    marginBottom: 42,
   },
   button: {
     width: 56,
