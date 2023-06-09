@@ -11,14 +11,21 @@ import { Participant } from '../../components/Participant'
 import { useState } from 'react'
 
 export function Home() {
-  const [participants, setParticipants] = useState<string[]>([
-    'Alex',
-    'Diego',
-    'Rodrigo',
-  ])
+  const [participants, setParticipants] = useState<string[]>([])
   const [participantName, setParticipantName] = useState('')
 
+  const today = new Intl.DateTimeFormat('pt-BR', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(new Date())
+
   function handleParticipantAdd() {
+    if (participantName === '') {
+      return
+    }
+
     if (participants.includes(participantName)) {
       return Alert.alert(
         'Participante já existe',
@@ -40,7 +47,6 @@ export function Home() {
         text: 'Sim',
         onPress: () => {
           setParticipants(participantsWithoutRemovedParticipant)
-          Alert.alert('Deletado!')
         },
       },
       {
@@ -52,8 +58,8 @@ export function Home() {
 
   return (
     <View style={homeStyles.container}>
-      <Text style={homeStyles.eventName}>Nome do Evento</Text>
-      <Text style={homeStyles.eventDate}>Sexta, 4 de Novembro de 2022.</Text>
+      <Text style={homeStyles.eventName}>Rocketseat One</Text>
+      <Text style={homeStyles.eventDate}>{today}</Text>
 
       <View style={homeStyles.form}>
         <TextInput
